@@ -3,3 +3,5 @@ Some scripts for a project investigating the in-host dynamics of a polyclonal in
 
 
 Currently what's on here is a skeleton of a clean version of the code. Most of it will need some reworking before upload
+
+some (toy) example data will also eventually be uploaded 
