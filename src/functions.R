@@ -13,10 +13,9 @@ yield_clr <- function(x){
     return(values)
 }
 
-
 data_loader <- function(){
 
-    files <- list.files()
+    files <- list.files("data/")
     files_R1 <- files[grep(files, pattern="R1_paired")]
     files_R2 <- files[grep(files, pattern="R2_paired")]
 
@@ -25,10 +24,10 @@ data_loader <- function(){
     }
     
 
-    if(!dir.exists("combined_csvs")){
-        system(paste0('mkdir ',sprintf("%s/combined_csvs",getwd())))
+    if(!dir.exists("data/combined_csvs")){
+        system('mkdir data/combined_csvs')
     }
-    output_dir <- sprintf("%s/combined_csvs",getwd())
+    output_dir <- "data/combined_csvs"
 
 
 
@@ -47,7 +46,7 @@ data_loader <- function(){
         combined_file$Matches <- current_file_R1$Matches + matching_file_R2$Matches
 
         # Write the combined file to the output directory
-        write.csv(combined_file, sprintf("%s/%scombined_R1R2.csv", getwd(), index_current))
+        write.csv(combined_file, sprintf("data/%scombined_R1R2.csv", index_current))
         #write.csv(combined_file, sprintf("%s/%scombined_R1R2.csv", "/Users/keiranmaskell/Desktop/newcode_testdir", index_current))
 
         return(combined_file)
@@ -77,7 +76,7 @@ data_loader <- function(){
 
 make_df <- function(){
 
-    input_dir <- sprintf("%s/combined_csvs",getwd())
+    input_dir <- "data/combined_csvs"
 
     files <- list.files(input_dir)[grep(list.files(input_dir), pattern = ".csv")]
 
